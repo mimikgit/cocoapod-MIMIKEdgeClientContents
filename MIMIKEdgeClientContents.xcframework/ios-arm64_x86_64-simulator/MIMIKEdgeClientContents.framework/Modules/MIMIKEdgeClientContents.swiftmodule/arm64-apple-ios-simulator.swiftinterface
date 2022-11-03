@@ -1,0 +1,609 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MIMIKEdgeClientContents
+import AVFoundation
+import Alamofire
+import Foundation
+import MIMIKEdgeClientCore
+import Swift
+import SwiftyJSON
+import UIKit
+import _Concurrency
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct ActivateContentRequestValidationVerdict : Swift.Codable {
+    public var passedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.PassedContentVariations]?
+    public var failedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.FailedContentVariations]?
+    public init(passedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.PassedContentVariations]?, failedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.FailedContentVariations]?)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS {
+  public func dictionary() -> [Swift.String : Any]?
+  public func jsonString() -> Swift.String?
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.NewContent {
+  public func dictionary() -> [Swift.String : Any]?
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentVariationsUpload {
+  public func dictionary() -> [Swift.String : Any]?
+  public func jsonString() -> Swift.String?
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentVariationsDownload {
+  public func dictionary() -> [Swift.String : Any]?
+  public func jsonString() -> Swift.String?
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequest {
+  public func dictionary() -> [Swift.String : Any]?
+  public func jsonString() -> Swift.String?
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS {
+  public func dictionary() -> [Swift.String : Any]?
+  public func jsonString() -> Swift.String?
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct ImageSpecifications : Swift.Codable {
+    public var resolution: Swift.String
+    public init(resolution: Swift.String)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct ContentTypeMCS : Swift.Codable {
+    public enum FileType : Swift.String, Swift.Codable {
+      case video
+      case image
+      case file
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public enum OriginalMimeType : Swift.String, Swift.Codable {
+      case imageJpeg
+      case videoMp4
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public enum AccessType : Swift.String, Swift.Codable {
+      case _private
+      case _public
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public enum Status : Swift.String, Swift.Codable {
+      case active
+      case archived
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public var type: Swift.String
+    public var fileType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.FileType
+    public var isOriginalRequired: Swift.Bool
+    public var isOriginalServed: Swift.Bool
+    public var originalMimeType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.OriginalMimeType?
+    public var accessType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.AccessType
+    public var possibleVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypePossibleVariations]
+    public var id: Foundation.UUID?
+    public var status: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.Status?
+    public var createdAt: Foundation.Date?
+    public var updatedAt: Foundation.Date?
+    public init(type: Swift.String, fileType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.FileType, isOriginalRequired: Swift.Bool, isOriginalServed: Swift.Bool, originalMimeType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.OriginalMimeType?, accessType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.AccessType, possibleVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypePossibleVariations], id: Foundation.UUID?, status: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.Status?, createdAt: Foundation.Date?, updatedAt: Foundation.Date?)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public typealias PrivilegedUsers = [Swift.String]
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct ContentVariationsUpload : Swift.Codable {
+    public var type: Swift.String
+    public var uploadUrl: Swift.String
+    public var uploadUrls: [MIMIKEdgeClientCore.MIMIKEdgeClient.MultiPartUploadUrls]?
+    public init(type: Swift.String, uploadUrl: Swift.String, uploadUrls: [MIMIKEdgeClientCore.MIMIKEdgeClient.MultiPartUploadUrls]?)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct ContentMCS : Swift.Codable {
+    public enum VariationsSource : Swift.String, Swift.Codable {
+      case uploads
+      case conversion
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public enum VariationsStatus : Swift.String, Swift.Codable {
+      case pending
+      case active
+      case archived
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public enum OriginalVariationsStatus : Swift.String, Swift.Codable {
+      case absent
+      case present
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public var ownerId: Swift.String
+    public var variationsSource: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.VariationsSource
+    public var privilegedUsers: MIMIKEdgeClientCore.MIMIKEdgeClient.PrivilegedUsers?
+    public var contentType: Swift.String
+    public var filename: Swift.String
+    public var createdAt: Foundation.Date?
+    public var updatedAt: Foundation.Date?
+    public var id: Foundation.UUID?
+    public var fullFilename: Swift.String?
+    public var status: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.VariationsStatus?
+    public var originalVariationStatus: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.OriginalVariationsStatus?
+    public var variations: [MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations]?
+    public init(ownerId: Swift.String, variationsSource: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.VariationsSource, privilegedUsers: MIMIKEdgeClientCore.MIMIKEdgeClient.PrivilegedUsers?, contentType: Swift.String, filename: Swift.String, createdAt: Foundation.Date?, updatedAt: Foundation.Date?, id: Foundation.UUID?, fullFilename: Swift.String?, status: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.VariationsStatus?, originalVariationStatus: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.OriginalVariationsStatus?, variations: [MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations]?)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct ContentTypePossibleVariations : Swift.Codable {
+    public var type: Swift.String?
+    public var mimeType: Swift.String?
+    public var _required: Swift.Bool?
+    public var publicDownloadUrl: Swift.String?
+    public var fileSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications?
+    public var imageSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.ImageSpecifications?
+    public var videoSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications?
+    public init(type: Swift.String?, mimeType: Swift.String?, _required: Swift.Bool?, publicDownloadUrl: Swift.String?, fileSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications?, imageSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.ImageSpecifications?, videoSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications?)
+    public enum CodingKeys : Swift.String, Swift.CodingKey {
+      case type
+      case mimeType
+      case _required
+      case publicDownloadUrl
+      case fileSpecifications
+      case imageSpecifications
+      case videoSpecifications
+      public init?(rawValue: Swift.String)
+      public init?(stringValue: Swift.String)
+      public init?(intValue: Swift.Int)
+      public typealias RawValue = Swift.String
+      public var intValue: Swift.Int? {
+        get
+      }
+      public var rawValue: Swift.String {
+        get
+      }
+      public var stringValue: Swift.String {
+        get
+      }
+    }
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct ActivateContentRequestConversionVerdict : Swift.Codable {
+    public var passedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.PassedConversionVariations]?
+    public var failedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.FailedConversionVariations]?
+    public init(passedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.PassedConversionVariations]?, failedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.FailedConversionVariations]?)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct FailedContentVariations : Swift.Codable {
+    public enum Reason : Swift.String, Swift.Codable {
+      case specMismatch
+      case variationOriginalMismatch
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public var type: Swift.String?
+    public var reason: MIMIKEdgeClientCore.MIMIKEdgeClient.FailedContentVariations.Reason?
+    public var notes: Swift.String?
+    public init(type: Swift.String?, reason: MIMIKEdgeClientCore.MIMIKEdgeClient.FailedContentVariations.Reason?, notes: Swift.String?)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct FailedConversionVariations : Swift.Codable {
+    public enum Reason : Swift.String, Swift.Codable {
+      case transcoderError
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public var type: Swift.String?
+    public var reason: MIMIKEdgeClientCore.MIMIKEdgeClient.FailedConversionVariations.Reason?
+    public var notes: Swift.String?
+    public init(type: Swift.String?, reason: MIMIKEdgeClientCore.MIMIKEdgeClient.FailedConversionVariations.Reason?, notes: Swift.String?)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct PassedContentVariations : Swift.Codable {
+    public var type: Swift.String?
+    public init(type: Swift.String?)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct PossibleVariations : Swift.Codable {
+    public var type: Swift.String?
+    public var mimeType: Swift.String?
+    public var _required: Swift.Bool?
+    public var fileSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications?
+    public var imageSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.ImageSpecifications?
+    public var videoSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications?
+    public init(type: Swift.String?, mimeType: Swift.String?, _required: Swift.Bool?, fileSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications?, imageSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.ImageSpecifications?, videoSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications?)
+    public enum CodingKeys : Swift.String, Swift.CodingKey {
+      case type
+      case mimeType
+      case _required
+      case fileSpecifications
+      case imageSpecifications
+      case videoSpecifications
+      public init?(rawValue: Swift.String)
+      public init?(stringValue: Swift.String)
+      public init?(intValue: Swift.Int)
+      public typealias RawValue = Swift.String
+      public var intValue: Swift.Int? {
+        get
+      }
+      public var rawValue: Swift.String {
+        get
+      }
+      public var stringValue: Swift.String {
+        get
+      }
+    }
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct VideoSpecifications : Swift.Codable {
+    public enum FrameRate : Swift.String, Swift.Codable {
+      case _30fps
+      case _60fps
+      case _90fps
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public var resolution: Swift.String
+    public var frameRate: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications.FrameRate
+    public init(resolution: Swift.String, frameRate: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications.FrameRate)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct ActivateContentRequest : Swift.Codable {
+    public enum Status : Swift.String, Swift.Codable {
+      case pending
+      case resolved
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public var _id: Foundation.UUID?
+    public var createdAt: Foundation.Date?
+    public var updatedAt: Foundation.Date?
+    public var contentId: Foundation.UUID?
+    public var status: MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequest.Status?
+    public var validationVerdict: MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequestValidationVerdict?
+    public var conversionVerdict: MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequestConversionVerdict?
+    public init(_id: Foundation.UUID?, createdAt: Foundation.Date?, updatedAt: Foundation.Date?, contentId: Foundation.UUID?, status: MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequest.Status?, validationVerdict: MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequestValidationVerdict?, conversionVerdict: MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequestConversionVerdict?)
+    public enum CodingKeys : Swift.String, Swift.CodingKey {
+      case _id
+      case createdAt
+      case updatedAt
+      case contentId
+      case status
+      case validationVerdict
+      case conversionVerdict
+      public init?(rawValue: Swift.String)
+      public init?(stringValue: Swift.String)
+      public init?(intValue: Swift.Int)
+      public typealias RawValue = Swift.String
+      public var intValue: Swift.Int? {
+        get
+      }
+      public var rawValue: Swift.String {
+        get
+      }
+      public var stringValue: Swift.String {
+        get
+      }
+    }
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct PassedConversionVariations : Swift.Codable {
+    public var type: Swift.String?
+    public init(type: Swift.String?)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public typealias ProgressHandler = (_ progress: Foundation.Progress) -> Swift.Void
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func uploadContent(sourceFileUrl: Foundation.URL, destinationUrl: Foundation.URL, mimeType: Swift.String, progressHandler: @escaping MIMIKEdgeClientCore.MIMIKEdgeClient.ProgressHandler) async -> Swift.Result<Swift.Bool, Swift.Error>
+  #endif
+
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func downloadContent(sourceUrl: Foundation.URL, destinationFileUrl: Foundation.URL, progressHandler: @escaping MIMIKEdgeClientCore.MIMIKEdgeClient.ProgressHandler) async -> Swift.Result<Swift.Bool, Swift.Error>
+  #endif
+
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func downloadImageContent(sourceUrl: Foundation.URL) async -> Swift.Result<UIKit.UIImage, Swift.Error>
+  #endif
+
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct ContentPossibleVariations : Swift.Codable {
+    public enum CurrentVariationStatus : Swift.String, Swift.Codable {
+      case absent
+      case active
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public enum NewVariationStatus : Swift.String, Swift.Codable {
+      case absent
+      case present
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public var type: Swift.String?
+    public var mimeType: Swift.String?
+    public var _required: Swift.Bool?
+    public var currentVariationStatus: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations.CurrentVariationStatus?
+    public var newVariationStatus: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations.NewVariationStatus?
+    public var publicDownloadUrl: Swift.String?
+    public var fileSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications?
+    public var imageSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.ImageSpecifications?
+    public var videoSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications?
+    public init(type: Swift.String?, mimeType: Swift.String?, _required: Swift.Bool?, currentVariationStatus: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations.CurrentVariationStatus?, newVariationStatus: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations.NewVariationStatus?, publicDownloadUrl: Swift.String?, fileSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications?, imageSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.ImageSpecifications?, videoSpecifications: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications?)
+    public enum CodingKeys : Swift.String, Swift.CodingKey {
+      case type
+      case mimeType
+      case _required
+      case currentVariationStatus
+      case newVariationStatus
+      case publicDownloadUrl
+      case fileSpecifications
+      case imageSpecifications
+      case videoSpecifications
+      public init?(rawValue: Swift.String)
+      public init?(stringValue: Swift.String)
+      public init?(intValue: Swift.Int)
+      public typealias RawValue = Swift.String
+      public var intValue: Swift.Int? {
+        get
+      }
+      public var rawValue: Swift.String {
+        get
+      }
+      public var stringValue: Swift.String {
+        get
+      }
+    }
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func exportVideo(session: AVFoundation.AVAssetExportSession, outputURL: Foundation.URL, outFileType: AVFoundation.AVFileType) async -> Swift.Result<Swift.Bool, Swift.Error>
+  #endif
+
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct MultiPartUploadUrls : Swift.Codable {
+    public var partNumber: Swift.Double?
+    public var url: Swift.String?
+    public init(partNumber: Swift.Double?, url: Swift.String?)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct ContentVariationsDownload : Swift.Codable {
+    public var type: Swift.String
+    public var fileType: Swift.String
+    public var mimeType: Swift.String
+    public var specifications: MIMIKEdgeClientCore.JSONValue
+    public var downloadUrl: Swift.String
+    public init(type: Swift.String, fileType: Swift.String, mimeType: Swift.String, specifications: MIMIKEdgeClientCore.JSONValue, downloadUrl: Swift.String)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+@objc @_inheritsConvenienceInitializers final public class MIMIKEdgeClientContents : ObjectiveC.NSObject {
+  public static let kSwaggerFileVersion: Swift.String
+  public static let kServiceType: MIMIKEdgeClientCore.MIMIKService.ServiceType
+  public static let kHealthCheckPath: Swift.String
+  final public class func swaggerFileVersion() -> Swift.String
+  final public class func serviceType() -> MIMIKEdgeClientCore.MIMIKService.ServiceType
+  final public class func serviceConfiguration(rootUrl: Foundation.URL, clientId: Swift.String) -> MIMIKEdgeClientCore.MIMIKService
+  final public class func healthCheckPath() -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func createContents(service: MIMIKEdgeClientCore.MIMIKService, newContent: MIMIKEdgeClientCore.MIMIKEdgeClient.NewContent) async -> Swift.Result<MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS, Swift.Error>
+  #endif
+
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func contents(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String) async -> Swift.Result<MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS, Swift.Error>
+  #endif
+
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func deleteContents(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String) async -> Swift.Result<Swift.Bool, Swift.Error>
+  #endif
+
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func contentsUploadUrl(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String, type: Swift.String, totalUploadUrls: Swift.Int?) async -> Swift.Result<MIMIKEdgeClientCore.MIMIKEdgeClient.ContentVariationsUpload, Swift.Error>
+  #endif
+
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func contentsVariations(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String, types: [Swift.String]) async -> Swift.Result<[MIMIKEdgeClientCore.MIMIKEdgeClient.ContentVariationsDownload], Swift.Error>
+  #endif
+
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func createActivationRequest(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String) async -> Swift.Result<MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequest, Swift.Error>
+  #endif
+
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func contentsTypes(service: MIMIKEdgeClientCore.MIMIKService, type: Swift.String?, fileType: Swift.String?, status: Swift.String?) async -> Swift.Result<[MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS], Swift.Error>
+  #endif
+
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct FileSpecifications : Swift.Codable {
+    public enum CompressionAlgorithm : Swift.String, Swift.Codable {
+      case zstd
+      case _none
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public var compressionAlgorithm: MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications.CompressionAlgorithm
+    public init(compressionAlgorithm: MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications.CompressionAlgorithm)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient {
+  public struct NewContent : Swift.Codable {
+    public enum VariationsSource : Swift.String, Swift.Codable {
+      case uploads
+      case conversion
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public var ownerId: Swift.String
+    public var variationsSource: MIMIKEdgeClientCore.MIMIKEdgeClient.NewContent.VariationsSource
+    public var privilegedUsers: MIMIKEdgeClientCore.MIMIKEdgeClient.PrivilegedUsers?
+    public var contentType: Swift.String
+    public var filename: Swift.String
+    public init(ownerId: Swift.String, variationsSource: MIMIKEdgeClientCore.MIMIKEdgeClient.NewContent.VariationsSource, privilegedUsers: MIMIKEdgeClientCore.MIMIKEdgeClient.PrivilegedUsers?, contentType: Swift.String, filename: Swift.String)
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.FileType : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.FileType : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.FileType : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.OriginalMimeType : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.OriginalMimeType : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.OriginalMimeType : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.AccessType : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.AccessType : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.AccessType : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.Status : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.Status : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.Status : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.VariationsSource : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.VariationsSource : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.VariationsSource : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.VariationsStatus : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.VariationsStatus : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.VariationsStatus : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.OriginalVariationsStatus : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.OriginalVariationsStatus : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.OriginalVariationsStatus : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypePossibleVariations.CodingKeys : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypePossibleVariations.CodingKeys : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypePossibleVariations.CodingKeys : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.FailedContentVariations.Reason : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.FailedContentVariations.Reason : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.FailedContentVariations.Reason : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.FailedConversionVariations.Reason : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.FailedConversionVariations.Reason : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.FailedConversionVariations.Reason : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.PossibleVariations.CodingKeys : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.PossibleVariations.CodingKeys : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.PossibleVariations.CodingKeys : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications.FrameRate : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications.FrameRate : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications.FrameRate : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequest.Status : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequest.Status : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequest.Status : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequest.CodingKeys : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequest.CodingKeys : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequest.CodingKeys : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations.CurrentVariationStatus : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations.CurrentVariationStatus : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations.CurrentVariationStatus : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations.NewVariationStatus : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations.NewVariationStatus : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations.NewVariationStatus : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations.CodingKeys : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations.CodingKeys : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations.CodingKeys : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications.CompressionAlgorithm : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications.CompressionAlgorithm : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications.CompressionAlgorithm : Swift.RawRepresentable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.NewContent.VariationsSource : Swift.Equatable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.NewContent.VariationsSource : Swift.Hashable {}
+extension MIMIKEdgeClientCore.MIMIKEdgeClient.NewContent.VariationsSource : Swift.RawRepresentable {}
