@@ -46,7 +46,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 def mimik
-  pod 'MIMIKEdgeClientContents', '13.6.2'
+  pod 'MIMIKEdgeClientContents'
 end
 
 target '{target}' do
