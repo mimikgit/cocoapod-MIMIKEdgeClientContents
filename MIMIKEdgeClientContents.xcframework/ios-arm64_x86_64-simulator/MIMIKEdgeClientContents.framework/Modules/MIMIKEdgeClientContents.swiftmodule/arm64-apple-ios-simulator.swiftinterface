@@ -93,13 +93,14 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
     public var isOriginalRequired: Swift.Bool
     public var isOriginalServed: Swift.Bool
     public var originalMimeType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.OriginalMimeType?
+    public var allowedVariationSources: [Swift.String]
     public var accessType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.AccessType
     public var possibleVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypePossibleVariations]
     public var id: Foundation.UUID?
     public var status: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.Status?
     public var createdAt: Foundation.Date?
     public var updatedAt: Foundation.Date?
-    public init(type: Swift.String, fileType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.FileType, isOriginalRequired: Swift.Bool, isOriginalServed: Swift.Bool, originalMimeType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.OriginalMimeType?, accessType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.AccessType, possibleVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypePossibleVariations], id: Foundation.UUID?, status: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.Status?, createdAt: Foundation.Date?, updatedAt: Foundation.Date?)
+    public init(type: Swift.String, fileType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.FileType, isOriginalRequired: Swift.Bool, isOriginalServed: Swift.Bool, originalMimeType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.OriginalMimeType?, allowedVariationSources: [Swift.String], accessType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.AccessType, possibleVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypePossibleVariations], id: Foundation.UUID?, status: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.Status?, createdAt: Foundation.Date?, updatedAt: Foundation.Date?)
     public func encode(to encoder: Swift.Encoder) throws
     public init(from decoder: Swift.Decoder) throws
   }
@@ -302,7 +303,8 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
     }
     public var resolution: Swift.String
     public var frameRate: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications.FrameRate
-    public init(resolution: Swift.String, frameRate: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications.FrameRate)
+    public var transcoderPresetId: Swift.String
+    public init(resolution: Swift.String, frameRate: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications.FrameRate, transcoderPresetId: Swift.String)
     public func encode(to encoder: Swift.Encoder) throws
     public init(from decoder: Swift.Decoder) throws
   }
