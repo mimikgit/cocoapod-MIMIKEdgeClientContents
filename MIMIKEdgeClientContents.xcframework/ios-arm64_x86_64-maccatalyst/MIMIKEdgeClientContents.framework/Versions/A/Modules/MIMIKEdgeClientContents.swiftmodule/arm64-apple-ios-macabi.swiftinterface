@@ -10,11 +10,16 @@ import SwiftyJSON
 import UIKit
 import _Concurrency
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct ActivateContentRequestValidationVerdict : Swift.Codable {
+  public struct ActivateContentRequestValidationVerdict : Swift.Codable, Swift.Hashable {
     public var passedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.PassedContentVariations]?
     public var failedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.FailedContentVariations]?
     public init(passedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.PassedContentVariations]?, failedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.FailedContentVariations]?)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequestValidationVerdict, b: MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequestValidationVerdict) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
@@ -42,15 +47,20 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS {
   public func jsonString() -> Swift.String?
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct ImageSpecifications : Swift.Codable {
+  public struct ImageSpecifications : Swift.Codable, Swift.Hashable {
     public var resolution: Swift.String
     public init(resolution: Swift.String)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.ImageSpecifications, b: MIMIKEdgeClientCore.MIMIKEdgeClient.ImageSpecifications) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct ContentTypeMCS : Swift.Codable {
+  public struct ContentTypeMCS : Swift.Codable, Swift.Hashable {
     public enum FileType : Swift.String, Swift.Codable {
       case video
       case image
@@ -101,7 +111,12 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
     public var createdAt: Foundation.Date?
     public var updatedAt: Foundation.Date?
     public init(type: Swift.String, fileType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.FileType, isOriginalRequired: Swift.Bool, isOriginalServed: Swift.Bool, originalMimeType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.OriginalMimeType?, allowedVariationSources: [Swift.String], accessType: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.AccessType, possibleVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypePossibleVariations], id: Foundation.UUID?, status: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS.Status?, createdAt: Foundation.Date?, updatedAt: Foundation.Date?)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS, b: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
@@ -109,17 +124,22 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
   public typealias PrivilegedUsers = [Swift.String]
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct ContentVariationsUpload : Swift.Codable {
+  public struct ContentVariationsUpload : Swift.Codable, Swift.Hashable {
     public var type: Swift.String
     public var uploadUrl: Swift.String
     public var uploadUrls: [MIMIKEdgeClientCore.MIMIKEdgeClient.MultiPartUploadUrls]?
     public init(type: Swift.String, uploadUrl: Swift.String, uploadUrls: [MIMIKEdgeClientCore.MIMIKEdgeClient.MultiPartUploadUrls]?)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentVariationsUpload, b: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentVariationsUpload) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct ContentMCS : Swift.Codable {
+  public struct ContentMCS : Swift.Codable, Swift.Hashable {
     public enum VariationsSource : Swift.String, Swift.Codable {
       case uploads
       case conversion
@@ -161,12 +181,17 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
     public var originalVariationStatus: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.OriginalVariationsStatus?
     public var variations: [MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations]?
     public init(ownerId: Swift.String, variationsSource: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.VariationsSource, privilegedUsers: MIMIKEdgeClientCore.MIMIKEdgeClient.PrivilegedUsers?, contentType: Swift.String, filename: Swift.String, createdAt: Foundation.Date?, updatedAt: Foundation.Date?, id: Foundation.UUID?, fullFilename: Swift.String?, status: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.VariationsStatus?, originalVariationStatus: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS.OriginalVariationsStatus?, variations: [MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations]?)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS, b: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct ContentTypePossibleVariations : Swift.Codable {
+  public struct ContentTypePossibleVariations : Swift.Codable, Swift.Hashable {
     public var type: Swift.String?
     public var mimeType: Swift.String?
     public var _required: Swift.Bool?
@@ -197,21 +222,31 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
         get
       }
     }
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypePossibleVariations, b: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypePossibleVariations) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct ActivateContentRequestConversionVerdict : Swift.Codable {
+  public struct ActivateContentRequestConversionVerdict : Swift.Codable, Swift.Hashable {
     public var passedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.PassedConversionVariations]?
     public var failedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.FailedConversionVariations]?
     public init(passedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.PassedConversionVariations]?, failedVariations: [MIMIKEdgeClientCore.MIMIKEdgeClient.FailedConversionVariations]?)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequestConversionVerdict, b: MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequestConversionVerdict) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct FailedContentVariations : Swift.Codable {
+  public struct FailedContentVariations : Swift.Codable, Swift.Hashable {
     public enum Reason : Swift.String, Swift.Codable {
       case specMismatch
       case variationOriginalMismatch
@@ -225,12 +260,17 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
     public var reason: MIMIKEdgeClientCore.MIMIKEdgeClient.FailedContentVariations.Reason?
     public var notes: Swift.String?
     public init(type: Swift.String?, reason: MIMIKEdgeClientCore.MIMIKEdgeClient.FailedContentVariations.Reason?, notes: Swift.String?)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.FailedContentVariations, b: MIMIKEdgeClientCore.MIMIKEdgeClient.FailedContentVariations) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct FailedConversionVariations : Swift.Codable {
+  public struct FailedConversionVariations : Swift.Codable, Swift.Hashable {
     public enum Reason : Swift.String, Swift.Codable {
       case transcoderError
       public init?(rawValue: Swift.String)
@@ -243,20 +283,30 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
     public var reason: MIMIKEdgeClientCore.MIMIKEdgeClient.FailedConversionVariations.Reason?
     public var notes: Swift.String?
     public init(type: Swift.String?, reason: MIMIKEdgeClientCore.MIMIKEdgeClient.FailedConversionVariations.Reason?, notes: Swift.String?)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.FailedConversionVariations, b: MIMIKEdgeClientCore.MIMIKEdgeClient.FailedConversionVariations) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct PassedContentVariations : Swift.Codable {
+  public struct PassedContentVariations : Swift.Codable, Swift.Hashable {
     public var type: Swift.String?
     public init(type: Swift.String?)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.PassedContentVariations, b: MIMIKEdgeClientCore.MIMIKEdgeClient.PassedContentVariations) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct PossibleVariations : Swift.Codable {
+  public struct PossibleVariations : Swift.Codable, Swift.Hashable {
     public var type: Swift.String?
     public var mimeType: Swift.String?
     public var _required: Swift.Bool?
@@ -285,12 +335,17 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
         get
       }
     }
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.PossibleVariations, b: MIMIKEdgeClientCore.MIMIKEdgeClient.PossibleVariations) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct VideoSpecifications : Swift.Codable {
+  public struct VideoSpecifications : Swift.Codable, Swift.Hashable {
     public enum FrameRate : Swift.String, Swift.Codable {
       case _30fps
       case _60fps
@@ -305,12 +360,17 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
     public var frameRate: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications.FrameRate
     public var transcoderPresetId: Swift.String
     public init(resolution: Swift.String, frameRate: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications.FrameRate, transcoderPresetId: Swift.String)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications, b: MIMIKEdgeClientCore.MIMIKEdgeClient.VideoSpecifications) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct ActivateContentRequest : Swift.Codable {
+  public struct ActivateContentRequest : Swift.Codable, Swift.Hashable {
     public enum Status : Swift.String, Swift.Codable {
       case pending
       case resolved
@@ -350,15 +410,25 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
         get
       }
     }
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequest, b: MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequest) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct PassedConversionVariations : Swift.Codable {
+  public struct PassedConversionVariations : Swift.Codable, Swift.Hashable {
     public var type: Swift.String?
     public init(type: Swift.String?)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.PassedConversionVariations, b: MIMIKEdgeClientCore.MIMIKEdgeClient.PassedConversionVariations) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
@@ -381,7 +451,7 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
 
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct ContentPossibleVariations : Swift.Codable {
+  public struct ContentPossibleVariations : Swift.Codable, Swift.Hashable {
     public enum CurrentVariationStatus : Swift.String, Swift.Codable {
       case absent
       case active
@@ -434,7 +504,12 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
         get
       }
     }
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations, b: MIMIKEdgeClientCore.MIMIKEdgeClient.ContentPossibleVariations) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
@@ -446,11 +521,16 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
 
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct MultiPartUploadUrls : Swift.Codable {
+  public struct MultiPartUploadUrls : Swift.Codable, Swift.Hashable {
     public var partNumber: Swift.Double?
     public var url: Swift.String?
     public init(partNumber: Swift.Double?, url: Swift.String?)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.MultiPartUploadUrls, b: MIMIKEdgeClientCore.MIMIKEdgeClient.MultiPartUploadUrls) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
@@ -480,42 +560,42 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
   
   #if compiler(>=5.3) && $AsyncAwait
-  final public func createContents(service: MIMIKEdgeClientCore.MIMIKService, newContent: MIMIKEdgeClientCore.MIMIKEdgeClient.NewContent) async -> Swift.Result<MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS, Swift.Error>
+  final public func createContent(service: MIMIKEdgeClientCore.MIMIKService, newContent: MIMIKEdgeClientCore.MIMIKEdgeClient.NewContent) async -> Swift.Result<MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS, Swift.Error>
   #endif
 
   
   #if compiler(>=5.3) && $AsyncAwait
-  final public func contents(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String) async -> Swift.Result<MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS, Swift.Error>
+  final public func content(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String) async -> Swift.Result<MIMIKEdgeClientCore.MIMIKEdgeClient.ContentMCS, Swift.Error>
   #endif
 
   
   #if compiler(>=5.3) && $AsyncAwait
-  final public func deleteContents(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String) async -> Swift.Result<Swift.Bool, Swift.Error>
+  final public func deleteContent(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String) async -> Swift.Result<Swift.Bool, Swift.Error>
   #endif
 
   
   #if compiler(>=5.3) && $AsyncAwait
-  final public func contentsUploadUrl(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String, type: Swift.String, totalUploadUrls: Swift.Int?) async -> Swift.Result<MIMIKEdgeClientCore.MIMIKEdgeClient.ContentVariationsUpload, Swift.Error>
+  final public func createContentUploadUrls(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String, type: Swift.String, totalUploadUrls: Swift.Int?) async -> Swift.Result<MIMIKEdgeClientCore.MIMIKEdgeClient.ContentVariationsUpload, Swift.Error>
   #endif
 
   
   #if compiler(>=5.3) && $AsyncAwait
-  final public func contentsVariations(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String, types: [Swift.String]) async -> Swift.Result<[MIMIKEdgeClientCore.MIMIKEdgeClient.ContentVariationsDownload], Swift.Error>
+  final public func contentDownloadUrls(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String, types: [Swift.String]) async -> Swift.Result<[MIMIKEdgeClientCore.MIMIKEdgeClient.ContentVariationsDownload], Swift.Error>
   #endif
 
   
   #if compiler(>=5.3) && $AsyncAwait
-  final public func createActivationRequest(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String) async -> Swift.Result<MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequest, Swift.Error>
+  final public func createContentActivationRequest(service: MIMIKEdgeClientCore.MIMIKService, id: Swift.String) async -> Swift.Result<MIMIKEdgeClientCore.MIMIKEdgeClient.ActivateContentRequest, Swift.Error>
   #endif
 
   
   #if compiler(>=5.3) && $AsyncAwait
-  final public func contentsTypes(service: MIMIKEdgeClientCore.MIMIKService, type: Swift.String?, fileType: Swift.String?, status: Swift.String?) async -> Swift.Result<[MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS], Swift.Error>
+  final public func contentTypes(service: MIMIKEdgeClientCore.MIMIKService, type: Swift.String?, fileType: Swift.String?, status: Swift.String?) async -> Swift.Result<[MIMIKEdgeClientCore.MIMIKEdgeClient.ContentTypeMCS], Swift.Error>
   #endif
 
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct FileSpecifications : Swift.Codable {
+  public struct FileSpecifications : Swift.Codable, Swift.Hashable {
     public enum CompressionAlgorithm : Swift.String, Swift.Codable {
       case zstd
       case _none
@@ -527,12 +607,17 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
     }
     public var compressionAlgorithm: MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications.CompressionAlgorithm
     public init(compressionAlgorithm: MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications.CompressionAlgorithm)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications, b: MIMIKEdgeClientCore.MIMIKEdgeClient.FileSpecifications) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }
 extension MIMIKEdgeClientCore.MIMIKEdgeClient {
-  public struct NewContent : Swift.Codable {
+  public struct NewContent : Swift.Codable, Swift.Hashable {
     public enum VariationsSource : Swift.String, Swift.Codable {
       case uploads
       case conversion
@@ -548,7 +633,12 @@ extension MIMIKEdgeClientCore.MIMIKEdgeClient {
     public var contentType: Swift.String
     public var filename: Swift.String
     public init(ownerId: Swift.String, variationsSource: MIMIKEdgeClientCore.MIMIKEdgeClient.NewContent.VariationsSource, privilegedUsers: MIMIKEdgeClientCore.MIMIKEdgeClient.PrivilegedUsers?, contentType: Swift.String, filename: Swift.String)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MIMIKEdgeClientCore.MIMIKEdgeClient.NewContent, b: MIMIKEdgeClientCore.MIMIKEdgeClient.NewContent) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
     public init(from decoder: Swift.Decoder) throws
   }
 }

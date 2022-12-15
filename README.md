@@ -9,13 +9,13 @@ using the following APIs:
 
 ### Contents
  
-* createContents
-* contents
-* deleteContents
-* contentsUploadUrl
-* contentsVariations
-* createActivationRequest
-* contentsTypes
+* createContent
+* content
+* deleteContent
+* createContentUploadUrls
+* contentDownloadUrls
+* createContentActivationRequest
+* contentTypes
 
 ### Video Export with Transcode and Upload
 
